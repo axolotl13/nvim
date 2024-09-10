@@ -1,6 +1,7 @@
 for _, module in ipairs {
   "octopus._opts",
   "octopus._maps",
+  "octopus._cmd",
 } do
   local ok, core = pcall(require, module)
   if not ok then
