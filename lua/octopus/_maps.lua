@@ -52,6 +52,8 @@ local keybinds = {
   { "t", "<esc>", "<C-\\><C-n>", "Escape [Terminal] mode" },
   -- Misc
   { "n", "<leader>n", "<cmd>set rnu!<cr>", "Toggle [Relativenumber]" },
+  -- Lazy
+  { "n", "<leader>ps", "<cmd>Lazy<cr>", "Open [Lazy]" },
 }
 
 for _, keybind in ipairs(keybinds) do
