@@ -11,7 +11,7 @@ autocmd("TextYankPost", {
 autocmd("BufEnter", {
   desc = "Don't auto comment new line",
   pattern = "*",
-  command = "setlocal fo-=c fo-=r fo-=o"
+  command = "setlocal fo-=c fo-=r fo-=o",
 })
 
 autocmd("BufReadPost", {
@@ -33,11 +33,11 @@ autocmd("BufReadPost", {
 autocmd("TermOpen", {
   desc = "Start insert open terminal",
   pattern = "*",
-  command = "startinsert"
+  command = "startinsert",
 })
 
 autocmd("TermOpen", {
   desc = "Disable number in terminal",
   pattern = "*",
-  command = "setlocal nonumber norelativenumber"
+  command = "setlocal nonumber norelativenumber",
 })

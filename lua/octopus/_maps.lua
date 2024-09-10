@@ -58,4 +58,3 @@ for _, keybind in ipairs(keybinds) do
   local mode, lhs, rhs, desc = unpack(keybind)
   map(mode, lhs, rhs, { desc = desc or "None", silent = true })
 end
-

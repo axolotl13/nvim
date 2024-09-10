@@ -12,7 +12,7 @@ opt.listchars = {
   eol = "↩",
   trail = "·",
   lead = "·",
-  tab="..",
+  tab = "..",
 }
 opt.expandtab = true -- Enable the use of space in tab
 opt.shiftwidth = 2 -- Number of space inserted for indentation
