@@ -50,6 +50,5 @@ opt.writebackup = false -- Disable making a backup before overwriting a file
 opt.whichwrap = "b,s,<,>,[,],h,l" -- Go to previous/next line
 opt.timeoutlen = 300 -- Shorten key timeout length a little bit for which-key
 opt.updatetime = 300 -- Length of time to wait before triggering the plugin
-opt.equalalways = true -- Windows are automatically made the same size after splitting or closing a window.
 opt.shortmess:append { s = true, I = true, c = true } -- Disable search count wrap and startup messages
 opt.backspace:append { "nostop" } -- Don't stop backspace at insert
