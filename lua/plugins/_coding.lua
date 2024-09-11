@@ -129,4 +129,8 @@ return {
     keys = { "ys", "ds", "cs" },
     opts = {},
   },
+  {
+    "mg979/vim-visual-multi",
+    keys = { "<c-n>", "<c-up>", "<c-down>", "<s-left>", "<s-right>" },
+  },
 }
