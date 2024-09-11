@@ -116,4 +116,131 @@ return {
       require("nvim-web-devicons").set_icon(opts)
     end,
   },
+  {
+    "nvim-tree/nvim-tree.lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      hijack_cursor = true,
+      disable_netrw = true,
+      respect_buf_cwd = true,
+      view = {
+        centralize_selection = true,
+        preserve_window_proportions = true,
+        width = 35,
+      },
+      renderer = {
+        add_trailing = true,
+        group_empty = false,
+        full_name = false,
+        root_folder_label = ":t:gs?$?/..?",
+        hidden_display = "simple",
+        highlight_git = "all",
+        highlight_diagnostics = "all",
+        highlight_opened_files = "icon",
+        highlight_modified = "icon",
+        highlight_hidden = "name",
+        highlight_bookmarks = "icon",
+        indent_markers = {
+          enable = true,
+        },
+        icons = {
+          show = {
+            modified = false,
+          },
+          glyphs = {
+            default = require("octopus._icons").hl.DefaultFile,
+            symlink = require("octopus._icons").hl.Symlink,
+            bookmark = require("octopus._icons").hl.Bookmarks,
+            modified = require("octopus._icons").hl.FileModified,
+            hidden = require("octopus._icons").hl.Hidden,
+            folder = {
+              arrow_open = require("octopus._icons").hl.FoldOpened,
+              arrow_closed = require("octopus._icons").hl.FoldClosed,
+              default = require("octopus._icons").hl.FolderClosed,
+              open = require("octopus._icons").hl.FolderOpen,
+              empty = require("octopus._icons").hl.FolderEmpty,
+              empty_open = require("octopus._icons").hl.FolderOpen,
+              symlink = require("octopus._icons").hl.FolderSymlink,
+              symlink_open = require("octopus._icons").hl.FolderSymlinkO,
+            },
+            git = {
+              unstaged = require("octopus._icons").hl.GitUnstaged,
+              staged = require("octopus._icons").hl.GitStaged,
+              unmerged = require("octopus._icons").hl.GitBranch,
+              renamed = require("octopus._icons").hl.GitRenamed,
+              untracked = require("octopus._icons").hl.GitUntracked,
+              deleted = require("octopus._icons").hl.GitDelete,
+              ignored = require("octopus._icons").hl.GitIgnored,
+            },
+          },
+        },
+      },
+      update_focused_file = {
+        enable = true,
+        update_root = {
+          enable = true,
+          ignore_list = { "diffview" },
+        },
+      },
+      diagnostics = {
+        enable = true,
+        icons = {
+          hint = require("octopus._icons").hl.DiagnosticHint,
+          info = require("octopus._icons").hl.DiagnosticInfo,
+          warning = require("octopus._icons").hl.DiagnosticWarn,
+          error = require("octopus._icons").hl.DiagnosticError,
+        },
+      },
+      modified = {
+        enable = true,
+      },
+      filters = {
+        custom = {
+          ".git",
+          "node_modules",
+          ".cache",
+        },
+        exclude = {
+          "gitsigns",
+          ".gitignore",
+          ".env",
+        },
+      },
+      actions = {
+        change_dir = {
+          global = true,
+        },
+        open_file = {
+          quit_on_open = true,
+        },
+      },
+      tab = {
+        sync = {
+          open = true,
+        },
+      },
+      ui = {
+        confirm = {
+          remove = false,
+          trash = false,
+        },
+      },
+    },
+    init = function()
+      vim.api.nvim_create_autocmd("BufEnter", {
+        pattern = "NvimTree_*",
+        callback = function()
+          local layout = vim.fn.winlayout()
+          if layout[1] == "leaf" and vim.bo[vim.fn.winbufnr(layout[2])].filetype == "NvimTree" and not layout[3] then
+            vim.cmd "confirm quit"
+          end
+        end,
+      })
+    end,
+    keys = {
+      { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Open [Explorer]" },
+      { "ñ", "<cmd>NvimTreeToggle<cr>", desc = "Open [Explorer]" },
+      { "Ñ", "<cmd>NvimTreeFocus<cr>", desc = "Focus [Explorer]" },
+    },
+  },
 }
