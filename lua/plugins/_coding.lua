@@ -124,4 +124,9 @@ return {
     event = "VeryLazy",
     opts = {},
   },
+  {
+    "kylechui/nvim-surround",
+    keys = { "ys", "ds", "cs" },
+    opts = {},
+  },
 }

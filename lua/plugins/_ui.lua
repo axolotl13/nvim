@@ -67,6 +67,9 @@ return {
           crust = "#0e0f16",
         },
       },
+      integrations = {
+        nvim_surround = true,
+      },
     },
     config = function(_, opts)
       require("catppuccin").setup(opts)
