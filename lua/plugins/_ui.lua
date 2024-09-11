@@ -69,6 +69,7 @@ return {
       },
       integrations = {
         nvim_surround = true,
+        which_key = true,
       },
     },
     config = function(_, opts)
