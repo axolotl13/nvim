@@ -69,6 +69,10 @@ return {
       },
       integrations = {
         nvim_surround = true,
+        telescope = {
+          enabled = true,
+          style = "nvchad",
+        },
         which_key = true,
       },
     },
