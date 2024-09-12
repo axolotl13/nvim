@@ -139,13 +139,6 @@ return {
               require("lspconfig")[server].setup(server_opts)
             end,
           },
-          lsp_handlers = {
-            ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single", silent = true }),
-            ["textDocument/signatureHelp"] = vim.lsp.with(
-              vim.lsp.handlers.signature_help,
-              { border = "single", silent = true, focusable = false }
-            ),
-          },
           mappings = {
             n = {
               gd = {
