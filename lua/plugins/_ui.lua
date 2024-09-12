@@ -75,6 +75,7 @@ return {
         }
       end,
       integrations = {
+        diffview = true,
         dropbar = true,
         mason = true,
         noice = true,

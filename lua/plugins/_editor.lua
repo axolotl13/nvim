@@ -232,4 +232,26 @@ return {
     },
     keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Enable [ZenMode]" } },
   },
+  {
+    "sindrets/diffview.nvim",
+    cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+    opts = {
+      enhanced_diff_hl = true,
+      view = {
+        default = {
+          winbar_info = true,
+        },
+        file_history = {
+          winbar_info = true,
+        },
+      },
+    },
+    keys = {
+      { "<leader>do", "<cmd>DiffviewOpen<cr>", desc = "Open [Diffview]" },
+      { "<leader>dq", "<cmd>DiffviewClose<cr>", desc = "Close [Diffview]" },
+      { "<leader>df", "<cmd>DiffviewToggleFiles<cr>", desc = "[Diffview] Toggle files" },
+      { "<leader>dh", "<cmd>DiffviewFileHistory<cr>", desc = "[Diffview] Open file history" },
+      { "<leader>dd", "<cmd>DiffviewFileHistory %<cr>", desc = "[Diffview] Open file history %" },
+    },
+  },
 }
