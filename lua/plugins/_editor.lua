@@ -221,4 +221,15 @@ return {
     opts = {},
     keys = { { "<leader>,v", "<cmd>Markview<cr>", desc = "Toggle [Markview]" } },
   },
+  {
+    "folke/zen-mode.nvim",
+    opts = {
+      plugins = {
+        options = {
+          laststatus = 0,
+        },
+      },
+    },
+    keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Enable [ZenMode]" } },
+  },
 }
