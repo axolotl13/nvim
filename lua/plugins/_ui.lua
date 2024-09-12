@@ -75,6 +75,7 @@ return {
         }
       end,
       integrations = {
+        mason = true,
         notify = true,
         nvim_surround = true,
         telescope = {
