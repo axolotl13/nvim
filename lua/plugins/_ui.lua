@@ -75,6 +75,7 @@ return {
         }
       end,
       integrations = {
+        dropbar = true,
         mason = true,
         notify = true,
         nvim_surround = true,
@@ -342,6 +343,23 @@ return {
     },
     init = function()
       vim.notify = require "notify"
+    end,
+  },
+  {
+    "Bekaboo/dropbar.nvim",
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    dependencies = {
+      "nvim-telescope/telescope-fzf-native.nvim",
+    },
+    opts = {
+      icons = {
+        kinds = {
+          symbols = require("octopus._icons").vs,
+        },
+      },
+    },
+    init = function()
+      vim.opt.mousemoveevent = true
     end,
   },
 }
