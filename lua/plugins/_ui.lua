@@ -67,6 +67,13 @@ return {
           crust = "#0e0f16",
         },
       },
+      custom_highlights = function(c)
+        return {
+          TreesitterContext = { bg = c.base },
+          TreesitterContextBottom = { underline = true, sp = c.surface1 },
+          TreesitterContextLineNumber = { bg = c.base },
+        }
+      end,
       integrations = {
         nvim_surround = true,
         telescope = {
