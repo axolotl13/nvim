@@ -370,6 +370,7 @@ return {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     },
+    tag = "v4.4.7",
     opts = {
       lsp = {
         override = {
