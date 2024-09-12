@@ -7,6 +7,7 @@ return {
         max_lines = 5,
       },
     },
+    { "HiPhish/rainbow-delimiters.nvim" },
   },
   build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile", "BufWritePre" },
