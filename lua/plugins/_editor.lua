@@ -214,4 +214,11 @@ return {
       },
     },
   },
+  {
+    "OXY2DEV/markview.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    ft = "markdown",
+    opts = {},
+    keys = { { "<leader>,v", "<cmd>Markview<cr>", desc = "Toggle [Markview]" } },
+  },
 }
