@@ -282,4 +282,28 @@ return {
     keys = { { "<leader>,c", "<cmd>CccPick<cr>", desc = "Enable [ColorPick]" } },
     config = true,
   },
+  {
+    "linux-cultist/venv-selector.nvim",
+    dependencies = {
+      { "neovim/nvim-lspconfig" },
+      { "nvim-telescope/telescope.nvim" },
+    },
+    branch = "regexp",
+    opts = {
+      settings = {
+        options = {
+          enable_default_searches = false,
+          notify_user_on_venv_activation = true,
+        },
+        search = {
+          venv = {
+            command = "fd '/bin/python$' . --full-path --color never -HI -a -L",
+          },
+        },
+      },
+    },
+    keys = {
+      { "<leader>,p", "<cmd>VenvSelect<cr>", desc = "Select [Venv]" },
+    },
+  },
 }
