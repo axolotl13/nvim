@@ -331,6 +331,7 @@ return {
         },
       },
     },
+    keys = { { "<leader>,i", "<cmd>IBLToggle<cr>", desc = "Toggle [Indent]" } },
   },
   {
     "rcarriga/nvim-notify",
