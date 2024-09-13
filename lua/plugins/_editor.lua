@@ -323,4 +323,10 @@ return {
       max_width_window_percentage = math.huge,
     },
   },
+  {
+    "HakonHarnes/img-clip.nvim",
+    ft = { "markdown", "html", "tex" },
+    keys = { { "<leader>,p", "<cmd>PasteImage<cr>", desc = "Paste [Image] from clipboard" } },
+    config = true,
+  },
 }
