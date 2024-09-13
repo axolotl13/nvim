@@ -254,4 +254,15 @@ return {
       { "<leader>dd", "<cmd>DiffviewFileHistory %<cr>", desc = "[Diffview] Open file history %" },
     },
   },
+  {
+    "iamcco/markdown-preview.nvim",
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+    ft = "markdown",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    keys = { { "<leader>,m", "<cmd>MarkdownPreviewToggle<cr>", desc = "[Markdown] Toggle preview" } },
+  },
 }
