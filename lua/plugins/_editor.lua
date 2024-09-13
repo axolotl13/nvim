@@ -277,4 +277,9 @@ return {
     keys = { { "<leader>c", "<cmd>HighlightColors Toggle<cr>", desc = "Toggle [HighlightColors]" } },
     config = true,
   },
+  {
+    "uga-rosa/ccc.nvim",
+    keys = { { "<leader>,c", "<cmd>CccPick<cr>", desc = "Enable [ColorPick]" } },
+    config = true,
+  },
 }
