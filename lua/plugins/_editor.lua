@@ -265,4 +265,10 @@ return {
     end,
     keys = { { "<leader>,m", "<cmd>MarkdownPreviewToggle<cr>", desc = "[Markdown] Toggle preview" } },
   },
+  {
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    keys = { { "<leader>,n", "<cmd>lua require('neogen').generate()<cr>", desc = "[Neogen] Generate annotations" } },
+    config = true,
+  },
 }
