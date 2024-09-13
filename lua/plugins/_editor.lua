@@ -6,6 +6,7 @@ return {
       spec = {
         {
           { "<leader>b", group = "Buffer" },
+          { "<leader>c", icon = { icon = " ", color = "gray" } },
           { "<leader>d", group = "Diffview", icon = { icon = "󰕛 ", color = "green" } },
           { "<leader>e", icon = { icon = "󰉌 ", color = "orange" } },
           { "<leader>g", group = "Git" },
@@ -269,6 +270,11 @@ return {
     "danymat/neogen",
     dependencies = "nvim-treesitter/nvim-treesitter",
     keys = { { "<leader>,n", "<cmd>lua require('neogen').generate()<cr>", desc = "[Neogen] Generate annotations" } },
+    config = true,
+  },
+  {
+    "brenoprata10/nvim-highlight-colors",
+    keys = { { "<leader>c", "<cmd>HighlightColors Toggle<cr>", desc = "Toggle [HighlightColors]" } },
     config = true,
   },
 }
