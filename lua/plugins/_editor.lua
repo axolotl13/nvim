@@ -11,6 +11,7 @@ return {
           { "<leader>e", icon = { icon = "󰉌 ", color = "orange" } },
           { "<leader>g", group = "Git" },
           { "<leader>p", group = "Lazy", icon = { icon = "󰒲 ", color = "cyan" } },
+          { "<leader>r", icon = "󰛔 " },
           { "<leader>s", group = "Search" },
           { "<leader>t", group = "Tabs" },
           { "<leader>,", group = "Extra", icon = { icon = " ", color = "pink" } },
@@ -331,8 +332,40 @@ return {
   },
   {
     "CRAG666/code_runner.nvim",
+    dependencies = {
+      "akinsho/toggleterm.nvim",
+      opts = {
+        autochdir = true,
+        highlights = {
+          Normal = { link = "Normal" },
+        },
+      },
+      config = function(_, opts)
+        local Terminal = require("toggleterm.terminal").Terminal
+        local serpl = Terminal:new {
+          cmd = "serpl",
+          direction = "float",
+          float_opts = {
+            border = "double",
+            winblend = 10,
+          },
+          on_open = function(term)
+            vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<esc>", "<cmd>close<cr>", { noremap = true, silent = true })
+          end,
+        }
+        function _G._toggle_serpl()
+          serpl:toggle()
+        end
+
+        require("toggleterm").setup(opts)
+      end,
+      keys = {
+        { "<leader>tt", "<cmd>ToggleTerm direction=horizontal<cr>", desc = "[Terminal]" },
+        { "<leader>r", "<cmd>lua _toggle_serpl()<cr>", desc = "Replace" },
+      },
+    },
     cmd = { "RunCode", "RunFile" },
     keys = { { "<f5>", "<cmd>RunCode<cr>", desc = "[Run] Code" } },
-    config = true,
+    opts = { mode = "toggleterm" },
   },
 }
