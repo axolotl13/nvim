@@ -238,7 +238,6 @@ return {
       },
       ui = {
         confirm = {
-          remove = false,
           trash = false,
         },
       },
