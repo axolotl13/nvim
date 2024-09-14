@@ -82,7 +82,6 @@ return {
             winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
             scrollbar = false,
           },
-          -- documentation = cmp.config.disable,
           documentation = {},
         },
         mapping = cmp.mapping.preset.insert {
