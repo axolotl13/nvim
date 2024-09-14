@@ -15,7 +15,7 @@ return {
           { "<leader>s", group = "Search" },
           { "<leader>t", group = "Tabs" },
           { "<leader>x", group = "Session" },
-          { "<leader>,", group = "Extra", icon = { icon = " ", color = "pink" } },
+          { "<leader>,", group = "Misc", icon = { icon = " ", color = "pink" } },
           { "z", group = "fold" },
         },
       },
@@ -32,7 +32,7 @@ return {
         function()
           require("which-key").show { global = false }
         end,
-        desc = "Buffer Local Keymaps [Which-key]",
+        desc = "Buffer local keymaps",
       },
     },
   },
@@ -67,29 +67,26 @@ return {
           vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
         end
 
-        map("n", "<leader>gg", gs.stage_hunk, "[Gitsigns] Stage git hunk")
-        map("n", "<leader>gu", gs.reset_hunk, "[Gitsigns] Reset git hunk")
-        map("n", "<leader>ga", gs.stage_buffer, "[Gitsigns] Stage git buffer")
-        map("n", "<leader>gq", gs.undo_stage_hunk, "[Gitsigns] Unstage git hunk")
-        map("n", "<leader>gr", gs.reset_buffer, "[Gitsigns] Reset git buffer")
-        map("n", "<leader>g}", gs.next_hunk, "[Gitsigns] Next git hunk")
-        map("n", "<leader>g{", gs.prev_hunk, "[Gitsigns] Previous git hunk")
-        map("n", "<leader>gp", gs.preview_hunk, "[Gitsigns] Preview git hunk")
-        map("n", "<leader>gd", gs.diffthis, "[Gitsigns] View git diff")
-        map("n", "<leader>gt", gs.blame, "[Gitsigns] Show git blame")
-        map("n", "<leader>gD", function()
-          gs.diffthis "~"
-        end, "[Gitsigns] View git diff")
-        map("n", "<leader>gl", gs.toggle_current_line_blame, "[Gitsigns] Toggle git blame")
-        map("n", "<leader>gh", gs.toggle_deleted, "[Gitsigns] Toggle deleted")
-        map("n", "<leader>gn", gs.toggle_numhl, "[Gitsigns] Toggle numhl")
+        map("n", "<leader>gg", gs.stage_hunk, "Stage git hunk")
+        map("n", "<leader>gu", gs.reset_hunk, "Reset git hunk")
+        map("n", "<leader>ga", gs.stage_buffer, "Stage git buffer")
+        map("n", "<leader>gq", gs.undo_stage_hunk, "Unstage git hunk")
+        map("n", "<leader>gr", gs.reset_buffer, "Reset git buffer")
+        map("n", "<leader>g}", gs.next_hunk, "Next git hunk")
+        map("n", "<leader>g{", gs.prev_hunk, "Previous git hunk")
+        map("n", "<leader>gp", gs.preview_hunk, "Preview git hunk")
+        map("n", "<leader>gd", gs.diffthis, "View git diff")
+        map("n", "<leader>gt", gs.blame, "View git blame")
+        map("n", "<leader>gl", gs.toggle_current_line_blame, "Toggle git blame line")
+        map("n", "<leader>gh", gs.toggle_deleted, "Toggle git show deleted")
+        map("n", "<leader>gn", gs.toggle_numhl, "Toggle numhl")
       end,
     },
   },
   {
     "tpope/vim-fugitive",
     cmd = "Git",
-    keys = { { "<leader>gc", "<cmd>Git commit<cr>", desc = "[Fugitive] Git commit" } },
+    keys = { { "<leader>gc", "<cmd>Git commit<cr>", desc = "Git commit" } },
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -156,22 +153,22 @@ return {
       {
         "<leader>sw",
         "<cmd>Telescope current_buffer_fuzzy_find<cr>",
-        desc = "[Telescope] Search words in current buffer",
+        desc = "Search words in current buffer",
       },
-      { "<leader>sx", "<cmd>Telescope command_history<cr>", desc = "[Telescope] Search command history" },
-      { "<leader>ss", "<cmd>Telescope live_grep<cr>", desc = "[Telescope] Search words" },
-      { "<leader>sf", "<cmd>Telescope find_files<cr>", desc = "[Telescope] Search files" },
-      { "<leader>sd", "<cmd>Telescope diagnostics<cr>", desc = "[Telescope] Search diagnostics" },
-      { "<leader>sc", "<cmd>Telescope git_commits<cr>", desc = "[Telescope] Git commits (repository)" },
-      { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "[Telescope] Search keymaps" },
-      { "<leader>so", "<cmd>Telescope oldfiles<cr>", desc = "[Telescope] Search history" },
-      { "<leader>st", "<cmd>Telescope git_status<cr>", desc = "[Telescope] Git status" },
-      { "<leader>sb", "<cmd>Telescope git_branches<cr>", desc = "[Telescope] Git branches" },
-      { "<leader>sm", "<cmd>Telescope fd cwd=$HOME<cr>", desc = "[Telescope] Search files in HOME" },
-      { "<leader>sn", "<cmd>Telescope notify<cr>", desc = "[Telescope] Search notifications" },
-      { "<leader>sq", "<cmd>Telescope buffers<cr>", desc = "[Telescope] Search buffers" },
-      { "<leader>sr", "<cmd>Telescope colorscheme<cr>", desc = "[Telescope] Search themes" },
-      { "<leader>se", "<cmd>Telescope grep_string<cr>", desc = "[Telescope] Search words under cursor" },
+      { "<leader>sx", "<cmd>Telescope command_history<cr>", desc = "Search command history" },
+      { "<leader>ss", "<cmd>Telescope live_grep<cr>", desc = "Search words" },
+      { "<leader>sf", "<cmd>Telescope find_files<cr>", desc = "Search files" },
+      { "<leader>sd", "<cmd>Telescope diagnostics<cr>", desc = "Search diagnostics" },
+      { "<leader>sc", "<cmd>Telescope git_commits<cr>", desc = "Git commits (repository)" },
+      { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Search keymaps" },
+      { "<leader>so", "<cmd>Telescope oldfiles<cr>", desc = "Search history" },
+      { "<leader>st", "<cmd>Telescope git_status<cr>", desc = "Git status" },
+      { "<leader>sb", "<cmd>Telescope git_branches<cr>", desc = "Git branches" },
+      { "<leader>sm", "<cmd>Telescope fd cwd=$HOME<cr>", desc = "Search files in HOME" },
+      { "<leader>sn", "<cmd>Telescope notify<cr>", desc = "Search notifications" },
+      { "<leader>sq", "<cmd>Telescope buffers<cr>", desc = "Search buffers" },
+      { "<leader>sr", "<cmd>Telescope colorscheme<cr>", desc = "Search themes" },
+      { "<leader>se", "<cmd>Telescope grep_string<cr>", desc = "Search words under cursor" },
     },
   },
   {
@@ -221,8 +218,8 @@ return {
     "OXY2DEV/markview.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     ft = "markdown",
-    opts = {},
-    keys = { { "<leader>,v", "<cmd>Markview<cr>", desc = "Toggle [Markview]" } },
+    config = true,
+    keys = { { "<leader>,v", "<cmd>Markview<cr>", desc = "Toggle Markview" } },
   },
   {
     "folke/zen-mode.nvim",
@@ -233,7 +230,7 @@ return {
         },
       },
     },
-    keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Enable [ZenMode]" } },
+    keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Enable ZenMode" } },
   },
   {
     "sindrets/diffview.nvim",
@@ -250,11 +247,11 @@ return {
       },
     },
     keys = {
-      { "<leader>do", "<cmd>DiffviewOpen<cr>", desc = "Open [Diffview]" },
-      { "<leader>dq", "<cmd>DiffviewClose<cr>", desc = "Close [Diffview]" },
-      { "<leader>df", "<cmd>DiffviewToggleFiles<cr>", desc = "[Diffview] Toggle files" },
-      { "<leader>dh", "<cmd>DiffviewFileHistory<cr>", desc = "[Diffview] Open file history" },
-      { "<leader>dd", "<cmd>DiffviewFileHistory %<cr>", desc = "[Diffview] Open file history %" },
+      { "<leader>do", "<cmd>DiffviewOpen<cr>", desc = "Open Diffview" },
+      { "<leader>dq", "<cmd>DiffviewClose<cr>", desc = "Close Diffview" },
+      { "<leader>df", "<cmd>DiffviewToggleFiles<cr>", desc = "Toggle file panel" },
+      { "<leader>dh", "<cmd>DiffviewFileHistory<cr>", desc = "History current branch" },
+      { "<leader>dd", "<cmd>DiffviewFileHistory %<cr>", desc = "History current file" },
     },
   },
   {
@@ -266,22 +263,22 @@ return {
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
     end,
-    keys = { { "<leader>,m", "<cmd>MarkdownPreviewToggle<cr>", desc = "[Markdown] Toggle preview" } },
+    keys = { { "<leader>,m", "<cmd>MarkdownPreviewToggle<cr>", desc = "Toggle Markdown Preview" } },
   },
   {
     "danymat/neogen",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    keys = { { "<leader>,n", "<cmd>lua require('neogen').generate()<cr>", desc = "[Neogen] Generate annotations" } },
+    keys = { { "<leader>,n", "<cmd>lua require('neogen').generate()<cr>", desc = "Generate Annotations" } },
     config = true,
   },
   {
     "brenoprata10/nvim-highlight-colors",
-    keys = { { "<leader>c", "<cmd>HighlightColors Toggle<cr>", desc = "Toggle [HighlightColors]" } },
+    keys = { { "<leader>c", "<cmd>HighlightColors Toggle<cr>", desc = "Toggle Highlight Colors" } },
     config = true,
   },
   {
     "uga-rosa/ccc.nvim",
-    keys = { { "<leader>,c", "<cmd>CccPick<cr>", desc = "Enable [ColorPick]" } },
+    keys = { { "<leader>,c", "<cmd>CccPick<cr>", desc = "Enable ColorPick" } },
     config = true,
   },
   {
@@ -304,9 +301,7 @@ return {
         },
       },
     },
-    keys = {
-      { "<leader>,p", "<cmd>VenvSelect<cr>", desc = "Select [Venv]" },
-    },
+    keys = { { "<leader>,s", "<cmd>VenvSelect<cr>", desc = "Select Venv" } },
   },
   {
     "3rd/image.nvim",
@@ -328,7 +323,7 @@ return {
   {
     "HakonHarnes/img-clip.nvim",
     ft = { "markdown", "html", "tex" },
-    keys = { { "<leader>,p", "<cmd>PasteImage<cr>", desc = "Paste [Image] from clipboard" } },
+    keys = { { "<leader>,p", "<cmd>PasteImage<cr>", desc = "Paste image from clipboard" } },
     config = true,
   },
   {
@@ -361,12 +356,12 @@ return {
         require("toggleterm").setup(opts)
       end,
       keys = {
-        { "<leader>tt", "<cmd>ToggleTerm direction=horizontal<cr>", desc = "[Terminal]" },
-        { "<leader>r", "<cmd>lua _toggle_serpl()<cr>", desc = "Replace" },
+        { "<leader>tt", "<cmd>ToggleTerm direction=horizontal<cr>", desc = "Toggle Terminal" },
+        { "<leader>r", "<cmd>lua _toggle_serpl()<cr>", desc = "Replace Keywords" },
       },
     },
     cmd = { "RunCode", "RunFile" },
-    keys = { { "<f5>", "<cmd>RunCode<cr>", desc = "[Run] Code" } },
+    keys = { { "<f5>", "<cmd>RunCode<cr>", desc = "Run Code" } },
     opts = { mode = "toggleterm" },
   },
   {
@@ -406,9 +401,9 @@ return {
       })
     end,
     keys = {
-      { "<leader>xs", "<cmd>lua require('resession').save()<cr>", desc = "Save [Session]" },
-      { "<leader>xl", "<cmd>lua require('resession').load()<cr>", desc = "Load [Session]" },
-      { "<leader>xd", "<cmd>lua require('resession').delete()<cr>", desc = "Delete [Session]" },
+      { "<leader>xs", "<cmd>lua require('resession').save()<cr>", desc = "Save Session" },
+      { "<leader>xl", "<cmd>lua require('resession').load()<cr>", desc = "Load Session" },
+      { "<leader>xd", "<cmd>lua require('resession').delete()<cr>", desc = "Delete Session" },
     },
   },
 }
