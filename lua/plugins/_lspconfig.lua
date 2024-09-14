@@ -117,6 +117,9 @@ return {
                   diagnostics = {
                     globals = { "vim" },
                   },
+                  workspace = {
+                    checkThirdParty = false,
+                  },
                   telemetry = {
                     enable = false,
                   },
@@ -133,11 +136,6 @@ return {
             format_on_save = {
               enabled = false,
             },
-          },
-          handlers = {
-            function(server, server_opts)
-              require("lspconfig")[server].setup(server_opts)
-            end,
           },
           mappings = {
             n = {
@@ -200,8 +198,6 @@ return {
               },
             },
           },
-          servers = {},
-          on_attach = nil,
         },
         keys = {
           {
