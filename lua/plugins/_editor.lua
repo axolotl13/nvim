@@ -14,6 +14,7 @@ return {
           { "<leader>r", icon = "󰛔 " },
           { "<leader>s", group = "Search" },
           { "<leader>t", group = "Tabs" },
+          { "<leader>x", group = "Session" },
           { "<leader>,", group = "Extra", icon = { icon = " ", color = "pink" } },
           { "z", group = "fold" },
         },
@@ -367,5 +368,47 @@ return {
     cmd = { "RunCode", "RunFile" },
     keys = { { "<f5>", "<cmd>RunCode<cr>", desc = "[Run] Code" } },
     opts = { mode = "toggleterm" },
+  },
+  {
+    "stevearc/resession.nvim",
+    lazy = false,
+    opts = {
+      autosave = {
+        enabled = true,
+        notify = false,
+      },
+    },
+    config = function(_, opts)
+      local resession = require "resession"
+      resession.setup(opts)
+
+      local function get_session_name()
+        local name = vim.fn.getcwd()
+        local branch = vim.trim(vim.fn.system "git branch --show-current")
+        if vim.v.shell_error == 0 then
+          return name .. branch
+        else
+          return name
+        end
+      end
+      vim.api.nvim_create_autocmd("VimEnter", {
+        callback = function()
+          if vim.fn.argc(-1) == 0 then
+            resession.load(get_session_name(), { dir = "session", silence_errors = true })
+          end
+        end,
+        nested = true,
+      })
+      vim.api.nvim_create_autocmd("VimLeavePre", {
+        callback = function()
+          resession.save(get_session_name(), { dir = "session", notify = false })
+        end,
+      })
+    end,
+    keys = {
+      { "<leader>xs", "<cmd>lua require('resession').save()<cr>", desc = "Save [Session]" },
+      { "<leader>xl", "<cmd>lua require('resession').load()<cr>", desc = "Load [Session]" },
+      { "<leader>xd", "<cmd>lua require('resession').delete()<cr>", desc = "Delete [Session]" },
+    },
   },
 }
