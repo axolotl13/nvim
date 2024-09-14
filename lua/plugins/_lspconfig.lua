@@ -145,57 +145,57 @@ return {
                 function()
                   vim.lsp.buf.definition()
                 end,
-                desc = "[LSP] Goto definition",
+                desc = "Goto Definition",
                 cond = "textDocument/definition",
               },
               gD = {
                 function()
                   vim.lsp.buf.declaration()
                 end,
-                desc = "[LSP] Goto declaration",
+                desc = "Goto Declaration",
                 cond = "textDocument/declaration",
               },
               gl = {
                 function()
                   vim.diagnostic.open_float()
                 end,
-                desc = "[LSP] Hover diagnostics",
+                desc = "Hover Diagnostics",
               },
               gt = {
                 function()
                   vim.lsp.buf.type_dehinition()
                 end,
-                desc = "[LSP] Type definition",
+                desc = "Type Definition",
               },
               gp = {
                 function()
                   vim.lsp.buf.code_action()
                 end,
-                desc = "[LSP] Code Action",
+                desc = "Code Action",
               },
               gr = {
                 function()
                   vim.lsp.buf.references()
                 end,
-                desc = "[LSP] Goto References",
+                desc = "Goto References",
               },
               gs = {
                 function()
                   vim.lsp.buf.signature_help()
                 end,
-                desc = "[LSP] Signature help",
+                desc = "Signature Help",
               },
               ["<leader>f"] = {
                 function()
                   vim.lsp.buf.format()
                 end,
-                desc = "[LSP] Format buffer",
+                desc = "Format Buffer",
               },
               gh = {
                 function()
                   require("astrolsp.toggles").buffer_inlay_hints()
                 end,
-                desc = "[LSP] Toggle inlay hints",
+                desc = "Toggle Inlay Hints",
                 cond = vim.lsp.inlay_hint and "textDocument/inlayHint" or false,
               },
             },
@@ -209,21 +209,21 @@ return {
             function()
               vim.diagnostic.open_float()
             end,
-            desc = "Hover [Diagnostic]",
+            desc = "Hover Diagnostic",
           },
           {
             "g{",
             function()
               vim.diagnostic.goto_prev()
             end,
-            desc = "Previous [Diagnostic]",
+            desc = "Previous Diagnostic",
           },
           {
             "g}",
             function()
               vim.diagnostic.goto_next()
             end,
-            desc = "Next [Diagnostic]",
+            desc = "Next Diagnostic",
           },
         },
       },
@@ -241,7 +241,7 @@ return {
               keymaps = { uninstall_package = "d" },
             },
           },
-          keys = { { "<leader>,a", "<cmd>Mason<cr>", desc = "Open [Mason]" } },
+          keys = { { "<leader>,a", "<cmd>Mason<cr>", desc = "Open Mason" } },
         },
         opts = function()
           return {

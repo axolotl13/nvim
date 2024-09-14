@@ -254,9 +254,9 @@ return {
       })
     end,
     keys = {
-      { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Open [Explorer]" },
-      { "ñ", "<cmd>NvimTreeToggle<cr>", desc = "Open [Explorer]" },
-      { "Ñ", "<cmd>NvimTreeFocus<cr>", desc = "Focus [Explorer]" },
+      { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Open Explorer" },
+      { "ñ", "<cmd>NvimTreeToggle<cr>", desc = "Open Explorer" },
+      { "Ñ", "<cmd>NvimTreeFocus<cr>", desc = "Focus Explorer" },
     },
   },
   {
@@ -330,7 +330,7 @@ return {
         },
       },
     },
-    keys = { { "<leader>,i", "<cmd>IBLToggle<cr>", desc = "Toggle [Indent]" } },
+    keys = { { "<leader>,i", "<cmd>IBLToggle<cr>", desc = "Toggle IndentBlankline" } },
   },
   {
     "rcarriga/nvim-notify",
