@@ -207,7 +207,7 @@ return {
               },
               gt = {
                 function()
-                  vim.lsp.buf.type_dehinition()
+                  vim.lsp.buf.type_definition()
                 end,
                 desc = "Type Definition",
               },
