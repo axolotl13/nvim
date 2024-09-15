@@ -164,6 +164,51 @@ return {
                 require("sqls").on_attach(client, bufnr)
               end,
             },
+            texlab = {
+              settings = {
+                texlab = {
+                  auxDirectory = ".",
+                  diagnosticsDelay = 50,
+                  build = {
+                    args = {
+                      "--keep-intermediates",
+                      "--keep-logs",
+                      "--synctex",
+                      "%f",
+                    },
+                    executable = "tectonic",
+                    onSave = true,
+                  },
+                },
+              },
+            },
+            vtsls = {
+              settings = {
+                complete_function_calls = true,
+                vtsls = {
+                  enableMoveToFileCodeAction = true,
+                  experimental = {
+                    completion = {
+                      enableServerSideFuzzyMatch = true,
+                    },
+                  },
+                },
+                typescript = {
+                  updateImportsOnFileMove = { enabled = "always" },
+                  suggest = {
+                    completeFunctionCalls = true,
+                  },
+                  inlayHints = {
+                    enumMemberValues = { enabled = true },
+                    functionLikeReturnTypes = { enabled = true },
+                    parameterNames = { enabled = "literals" },
+                    parameterTypes = { enabled = true },
+                    propertyDeclarationTypes = { enabled = true },
+                    variableTypes = { enabled = false },
+                  },
+                },
+              },
+            },
             yamlls = {
               settings = {
                 redhat = { telemetry = { enabled = false } },
