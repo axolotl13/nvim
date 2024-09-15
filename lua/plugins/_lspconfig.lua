@@ -378,4 +378,71 @@ return {
     lazy = true,
     keys = { { "<f5>", mode = "x", ":SqlsExecuteQuery<cr>gv", "Execute query" } },
   },
+  {
+    "nvimtools/none-ls.nvim",
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    dependencies = {
+      "jay-babu/mason-null-ls.nvim",
+      opts = {
+        ensure_installed = {
+          "gitlint",
+          "hadolint",
+          "markdownlint",
+          "markuplint",
+          "phpcsfixer",
+          "prettierd",
+          "selene",
+          "shfmt",
+          "stylua",
+          "sqlfluff",
+          "yamllint",
+        },
+        handlers = {
+          gitlint = function()
+            require("null-ls").register(require("null-ls").builtins.diagnostics.gitlint)
+          end,
+          hadolint = function()
+            require("null-ls").register(require("null-ls").builtins.diagnostics.hadolint)
+          end,
+          markdownlint = function()
+            require("null-ls").register(require("null-ls").builtins.diagnostics.markdownlint)
+            require("null-ls").register(require("null-ls").builtins.formatting.markdownlint)
+          end,
+          markuplint = function()
+            require("null-ls").register(require("null-ls").builtins.diagnostics.markuplint)
+          end,
+          phpcsfixer = function()
+            require("null-ls").register(require("null-ls").builtins.formatting.phpcsfixer)
+          end,
+          prettierd = function()
+            require("null-ls").register(require("null-ls").builtins.formatting.prettierd.with {
+              disabled_filetypes = { "markdown" },
+            })
+          end,
+          selene = function()
+            require("null-ls").register(require("null-ls").builtins.diagnostics.selene)
+          end,
+          shfmt = function()
+            require("null-ls").register(require("null-ls").builtins.formatting.shfmt.with {
+              extra_args = { "-i", "4" },
+            })
+          end,
+          sqlfluff = function()
+            require("null-ls").register(require("null-ls").builtins.diagnostics.sqlfluff.with {
+              extra_args = { "--config", vim.fn.expand "$HOME" .. "/.sqlfluff" },
+            })
+          end,
+          stylua = function()
+            require("null-ls").register(require("null-ls").builtins.formatting.stylua)
+          end,
+          yamllint = function()
+            require("null-ls").register(require("null-ls").builtins.diagnostics.yamllint)
+          end,
+        },
+      },
+    },
+    opts = function()
+      return { on_attach = require("astrolsp").on_attach }
+    end,
+  },
 }
