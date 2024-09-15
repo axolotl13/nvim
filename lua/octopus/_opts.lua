@@ -1,7 +1,6 @@
 local g = vim.g
 local opt = vim.opt
 
-opt.cmdheight = 0 -- Hide command line unless needed
 opt.list = true -- Show invisible characters
 opt.fillchars = {
   foldopen = "",
