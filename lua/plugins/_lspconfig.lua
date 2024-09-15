@@ -130,6 +130,14 @@ return {
             },
             cssls = { init_options = { provideFormatter = false } },
             html = { init_options = { provideFormatter = false } },
+            jsonls = {
+              settings = {
+                json = {
+                  schemas = require("schemastore").json.schemas(),
+                  validate = { enable = true },
+                },
+              },
+            },
             lua_ls = {
               settings = {
                 Lua = {
@@ -150,6 +158,19 @@ return {
               on_attach = function(client)
                 client.server_capabilities.hoverProvider = false
               end,
+            },
+            yamlls = {
+              settings = {
+                redhat = { telemetry = { enabled = false } },
+                yaml = {
+                  validate = true,
+                  schemaStore = {
+                    enable = false,
+                    url = "",
+                  },
+                  schemas = require("schemastore").yaml.schemas(),
+                },
+              },
             },
           },
           formatting = {

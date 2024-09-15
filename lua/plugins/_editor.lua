@@ -406,4 +406,8 @@ return {
       { "<leader>xd", "<cmd>lua require('resession').delete()<cr>", desc = "Delete Session" },
     },
   },
+  {
+    "b0o/SchemaStore.nvim",
+    lazy = true,
+  },
 }
