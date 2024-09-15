@@ -1,3 +1,4 @@
+local g = vim.g
 local opt = vim.opt
 
 opt.cmdheight = 0 -- Hide command line unless needed
@@ -52,3 +53,30 @@ opt.timeoutlen = 300 -- Shorten key timeout length a little bit for which-key
 opt.updatetime = 300 -- Length of time to wait before triggering the plugin
 opt.shortmess:append { s = true, I = true, c = true } -- Disable search count wrap and startup messages
 opt.backspace:append { "nostop" } -- Don't stop backspace at insert
+
+if g.neovide then
+  opt.guifont = "JetBrainsMonoNL NFM:h13"
+  opt.linespace = 0
+  opt.winblend = 10
+  opt.pumblend = 15
+  g.neovide_scale_factor = 1
+  g.neovide_text_gamma = 0.0
+  g.neovide_text_contrast = 0.8
+  g.neovide_floating_shadow = true
+  g.neovide_floating_z_height = 15
+  g.neovide_light_angle_degrees = 45
+  g.neovide_light_radius = 5
+  g.neovide_position_animation_length = 0.6
+  g.neovide_scroll_animation_length = 0.3
+  g.neovide_scroll_animation_far_lines = 1
+  g.neovide_hide_mouse_when_typing = true
+  g.neovide_underline_stroke_scale = 1.0
+  g.neovide_cursor_animation_length = 0.13
+  g.neovide_cursor_animate_in_insert_mode = true
+  g.neovide_cursor_trail_size = 0.4
+  g.neovide_cursor_antialiasing = true
+  g.neovide_cursor_vfx_mode = "ripple"
+  g.neovide_unlink_border_highlights = true
+  g.neovide_remember_window_size = true
+  vim.keymap.set({ "n", "i" }, "<c-s-v>", '<esc>l"+Pli')
+end
