@@ -55,10 +55,12 @@ return {
           end,
         },
         sources = {
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
+          { name = "nvim_lsp", priority = 1000 },
+          { name = "luasnip", priority = 750 },
           {
             name = "buffer",
+            priority = 500,
+            group_index = 2,
             option = {
               get_bufnrs = function()
                 local buf = vim.api.nvim_get_current_buf()
@@ -70,7 +72,7 @@ return {
               end,
             },
           },
-          { name = "path" },
+          { name = "path", priority = 250 },
         },
         experimental = {
           ghost_text = {
@@ -82,7 +84,6 @@ return {
             winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
             scrollbar = false,
           },
-          documentation = {},
         },
         mapping = cmp.mapping.preset.insert {
           ["<up>"] = cmp.mapping.select_prev_item(),
