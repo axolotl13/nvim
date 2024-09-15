@@ -159,6 +159,11 @@ return {
                 client.server_capabilities.hoverProvider = false
               end,
             },
+            sqls = {
+              on_attach = function(client, bufnr)
+                require("sqls").on_attach(client, bufnr)
+              end,
+            },
             yamlls = {
               settings = {
                 redhat = { telemetry = { enabled = false } },
@@ -367,5 +372,10 @@ return {
         },
       })
     end,
+  },
+  {
+    "nanotee/sqls.nvim",
+    lazy = true,
+    keys = { { "<f5>", mode = "x", ":SqlsExecuteQuery<cr>gv", "Execute query" } },
   },
 }
