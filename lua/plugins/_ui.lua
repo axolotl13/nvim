@@ -380,6 +380,7 @@ return {
           ["cmp.entry.get_documentation"] = true,
         },
         signature = {
+          enabled = false,
           auto_open = {
             trigger = false,
           },
