@@ -177,6 +177,51 @@ return {
                 },
               },
             },
+            texlab = {
+              settings = {
+                texlab = {
+                  auxDirectory = ".",
+                  diagnosticsDelay = 50,
+                  build = {
+                    args = {
+                      "--keep-intermediates",
+                      "--keep-logs",
+                      "--synctex",
+                      "%f",
+                    },
+                    executable = "tectonic",
+                    onSave = true,
+                  },
+                },
+              },
+            },
+            vtsls = {
+              settings = {
+                complete_function_calls = true,
+                vtsls = {
+                  enableMoveToFileCodeAction = true,
+                  experimental = {
+                    completion = {
+                      enableServerSideFuzzyMatch = true,
+                    },
+                  },
+                },
+                typescript = {
+                  updateImportsOnFileMove = { enabled = "always" },
+                  suggest = {
+                    completeFunctionCalls = true,
+                  },
+                  inlayHints = {
+                    enumMemberValues = { enabled = true },
+                    functionLikeReturnTypes = { enabled = true },
+                    parameterNames = { enabled = "literals" },
+                    parameterTypes = { enabled = true },
+                    propertyDeclarationTypes = { enabled = true },
+                    variableTypes = { enabled = false },
+                  },
+                },
+              },
+            },
           },
           formatting = {
             format_on_save = {
@@ -454,5 +499,10 @@ return {
       title = false,
     },
     keys = { { "<MouseMove>", '<cmd>lua require("hover").hover_mouse()<cr>', desc = "Hover (mouse)" } },
+  },
+  {
+    "nanotee/sqls.nvim",
+    lazy = true,
+    keys = { { "<f5>", mode = "x", ":SqlsExecuteQuery<cr>gv", "Execute query" } },
   },
 }
