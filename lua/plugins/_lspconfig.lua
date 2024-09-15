@@ -289,9 +289,8 @@ return {
   {
     "AstroNvim/astrolsp",
     opts = function(_, opts)
-      opts.capabilities =
-        vim.tbl_deep_extend("force", opts.capabilities, require("cmp_nvim_lsp").default_capabilities())
-      opts.capabilities = vim.tbl_deep_extend("force", opts.capabilities, {
+      opts.capabilities = require("cmp_nvim_lsp").default_capabilities()
+      opts.capabilities = vim.list_extend(opts.capabilities, {
         textDocument = {
           foldingRange = {
             dynamicRegistration = false,
