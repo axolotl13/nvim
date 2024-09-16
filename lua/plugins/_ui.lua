@@ -456,4 +456,152 @@ return {
       },
     },
   },
+  {
+    "rebelot/heirline.nvim",
+    dependencies = {
+      "zeioth/heirline-components.nvim",
+      opts = { icons = require("octopus._icons").hl },
+    },
+    event = { "BufReadPost", "BufNewFile" },
+    opts = function()
+      local lib = require "heirline-components.all"
+      local env = require "heirline-components.core.env"
+      local core_utils = require "heirline-components.core.utils"
+      local condition = require "heirline-components.core.condition"
+
+      return {
+        tabline = {
+          lib.component.tabline_conditional_padding {
+            provider = function(self)
+              return string.rep(" ", vim.api.nvim_win_get_width(self.winid))
+            end,
+            hl = { bg = "bg" },
+          },
+          lib.component.tabline_buffers {
+            file_modified = {
+              padding = { left = 1, right = 1 },
+              condition = condition.is_file,
+            },
+            surround = false,
+          },
+          lib.component.fill { hl = { bg = "bg" } },
+          lib.component.tabline_tabpages(),
+        },
+        statuscolumn = {
+          init = function(self)
+            self.bufnr = vim.api.nvim_get_current_buf()
+          end,
+          lib.component.foldcolumn { foldcolumn = { padding = { right = 0 } } },
+          lib.component.numbercolumn(),
+          lib.component.signcolumn {
+            signcolumn = { padding = { right = 0 } },
+            on_click = {
+              name = "sign_click",
+              callback = function(...)
+                local args = core_utils.statuscolumn_clickargs(...)
+                if args.sign and args.sign.name and env.sign_handlers[args.sign.name] then
+                  env.sign_handlers[args.sign.name](args)
+                end
+                vim.cmd ":silent! Gitsigns preview_hunk"
+              end,
+            },
+          },
+        },
+        statusline = {
+          hl = { fg = "fg", bg = "bg" },
+          { provider = " ", hl = { bg = "none" } },
+          lib.component.mode {
+            provider = " ",
+            mode_text = {},
+            surround = { separator = { "", "" } },
+            hl = { bold = true },
+          },
+          lib.component.git_branch { padding = { left = 2 }, surround = { separator = "none" } },
+          lib.component.file_info {
+            filetype = false,
+            filename = {},
+            file_modified = { hl = { fg = "git_added" }, padding = { left = 1 } },
+            file_read_only = {},
+            padding = { left = 2 },
+          },
+          lib.component.virtual_env { surround = { separator = "none" }, padding = { right = 1 } },
+          lib.component.git_diff(),
+          lib.component.diagnostics(),
+          lib.component.fill(),
+          lib.component.cmd_info(),
+          lib.component.fill(),
+          lib.component.lsp { padding = { right = 2 } },
+          lib.component.file_encoding { hl = { fg = "diag_INFO" }, padding = { right = 2 } },
+          lib.component.treesitter { surround = { separator = "none" }, padding = { right = 2 } },
+          lib.component.file_info {
+            file_icon = { padding = { left = 0 } },
+            filename = false,
+            file_modified = false,
+            file_read_only = false,
+            surround = { separator = "none" },
+            padding = { right = 2 },
+          },
+          lib.component.mode {
+            provider = " %6(%l/%2L%):%2c",
+            surround = {
+              separator = { "", "" },
+            },
+            hl = { bold = true },
+            padding = { right = 1 },
+          },
+          { provider = " ", hl = { bg = "none" } },
+        },
+      }
+    end,
+    config = function(_, opts)
+      local heirline = require "heirline"
+      local heirline_components = require "heirline-components.all"
+
+      heirline_components.init.subscribe_to_events()
+      heirline.load_colors(heirline_components.hl.get_colors())
+      heirline.setup(opts)
+
+      vim.api.nvim_create_autocmd({ "BufAdd", "BufEnter", "TabNewEntered", "BufDelete" }, {
+        callback = function()
+          if #vim.t.bufs > 1 then
+            vim.o.showtabline = 2
+          elseif vim.o.showtabline ~= 1 then
+            vim.o.showtabline = 1
+          end
+        end,
+      })
+    end,
+    keys = {
+      {
+        "<c-z>",
+        "<cmd>lua require('heirline-components.buffer').close_all(true)<cr>",
+        desc = "Close all buffer except current",
+      },
+      {
+        "<tab>",
+        "<cmd>lua require('heirline-components.buffer').nav(vim.v.count > 0 and vim.v.count or 1)<cr>",
+        desc = "Next Buffer",
+      },
+      {
+        "<s-tab>",
+        "<cmd>lua require('heirline-components.buffer').nav(-(vim.v.count > 0 and vim.v.count or 1))<cr>",
+        desc = "Previous Buffer",
+      },
+      {
+        "<a-right>",
+        "<cmd>lua require('heirline-components.buffer').move(vim.v.count > 0 and vim.v.count or 1)<cr>",
+        desc = "Move Buffer right",
+      },
+      {
+        "<a-left>",
+        "<cmd>lua require('heirline-components.buffer').move(-(vim.v.count > 0 and vim.v.count or 1))<cr>",
+        desc = "Move Buffer left",
+      },
+      {
+        "<leader>bp",
+        "<cmd>lua require('heirline-components.all').heirline.buffer_picker(function(bufnr) vim.api.nvim_win_set_buf(0, bufnr) end)<cr>",
+        desc = "Pick Buffer",
+      },
+    },
+  },
 }

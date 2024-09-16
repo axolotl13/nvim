@@ -37,7 +37,7 @@ local icons = {
   },
   hl = {
     ActiveLSP = "",
-    ActiveTS = "󰐅",
+    ActiveTS = "󰫈",
     ArrowLeft = " ",
     ArrowRight = " ",
     Bookmarks = "",
@@ -62,7 +62,7 @@ local icons = {
     FolderSymlink = "",
     FolderSymlinkO = "",
     GitAdd = "󰐗",
-    GitBranch = "",
+    GitBranch = "",
     GitChange = "󰙦",
     GitConflict = "",
     GitDelete = "󰍶",
