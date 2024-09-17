@@ -444,6 +444,7 @@ return {
         "terminal",
         "prompt",
         "TelescopePrompt",
+        "gitsigns-blame",
         "noice",
         "notify",
       },
