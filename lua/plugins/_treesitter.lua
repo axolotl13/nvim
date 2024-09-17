@@ -125,7 +125,7 @@ return {
     opt.foldcolumn = "1"
     opt.foldlevelstart = 99
     opt.foldlevel = 99
-    opt.foldexpr = "nvim_treesitter#foldexpr()"
+    opt.foldexpr = "v:lua.require'octopus._misc'.foldexpr()"
     opt.foldtext = ""
     vim.api.nvim_create_autocmd("BufReadPre", {
       callback = function(v)

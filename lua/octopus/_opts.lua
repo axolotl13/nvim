@@ -5,6 +5,8 @@ opt.list = true -- Show invisible characters
 opt.fillchars = {
   foldopen = "",
   foldclose = "",
+  fold = " ",
+  foldsep = " ",
   diff = "╱",
   eob = " ",
 }
