@@ -529,9 +529,22 @@ return {
           lib.component.git_diff(),
           lib.component.diagnostics(),
           lib.component.fill(),
-          lib.component.cmd_info(),
+          lib.component.lsp(),
           lib.component.fill(),
-          lib.component.lsp { padding = { right = 2 } },
+          {
+            provider = function()
+              local fmt = vim.bo.fileformat
+              if fmt ~= "" then
+                local symbols = {
+                  unix = "",
+                  dos = "",
+                  mac = "",
+                }
+                return symbols[fmt]
+              end
+            end,
+            hl = { fg = "diag_INFO" },
+          },
           lib.component.file_encoding { hl = { fg = "diag_INFO" }, padding = { right = 2 } },
           lib.component.treesitter { surround = { separator = "none" }, padding = { right = 2 } },
           lib.component.file_info {
